@@ -1,0 +1,44 @@
+.book-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.book-list li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.book-list li:hover {
+    background-color: #f0f0f0;
+}
+
+h2 {
+    color: #333;
+}
+
+.add-book {
+    margin: 20px 0;
+}
+
+.add-book input,
+.add-book button {
+    padding: 10px;
+}
+
+.add-book input {
+    width: 70%;
+}
+
+.add-book button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.add-book button:hover {
+    background-color: #218838;
+}
