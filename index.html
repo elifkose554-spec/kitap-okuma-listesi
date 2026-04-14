@@ -1,106 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6th Grade Class Book Reading List</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        h1 { text-align: center; }
-        .student {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-        }
-        .buttons {
-            display: flex;
-            align-items: center;
-        }
-        .buttons button {
-            margin: 0 5px;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-        }
-    </style>
+    <title>Kitap Okuma Listesi</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-    <h1>6th Grade Class Book Reading List</h1>
-    <div id="student-list">
-        <!-- Student list will be dynamically generated here -->
-    </div>
-    <button onclick="showModal()">Manage Books</button>
-    <button onclick="undoLastAction()">Undo</button>
-    <div class="modal" id="book-modal">
-        <div class="modal-content">
-            <span onclick="closeModal()" style="cursor:pointer;">&times; Close</span>
-            <h2>Book Management</h2>
-            <div id="book-list">
-                <!-- Book list will be displayed here -->
+    <header>
+        <h1>Kitap Okuma Listesi Uygulaması</h1>
+    </header>
+    <main>
+        <section id="book-management">
+            <h2>Kitap Yönetimi</h2>
+            <button id="add-book-btn">Yeni Kitap Ekle</button>
+            <div id="book-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Kitap Ekle</h2>
+                    <form id="book-form">
+                        <label for="book-title">Kitap Adı:</label>
+                        <input type="text" id="book-title" required>
+                        <label for="author">Yazar:</label>
+                        <input type="text" id="author" required>
+                        <input type="submit" value="Ekle">
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-<script>
-    const students = [
-        { name: 'Student 1', lastInteraction: '2026-04-14', bookCount: 0 },
-        { name: 'Student 2', lastInteraction: '2026-04-14', bookCount: 0 },
-        { name: 'Student 3', lastInteraction: '2026-04-14', bookCount: 0 },
-        // Add all students up to Student 31
-        { name: 'Student 31', lastInteraction: '2026-04-14', bookCount: 0 }
-    ];
-
-    function renderStudentList() {
-        const studentList = document.getElementById('student-list');
-        studentList.innerHTML = '';
-        students.forEach((student, index) => {
-            const studentDiv = document.createElement('div');
-            studentDiv.classList.add('student');
-            studentDiv.innerHTML = `<span>${student.name}</span>
-                                   <div class="buttons">
-                                       <button onclick="updateBookCount(${index}, 1)">+</button>
-                                       <span>${student.bookCount}</span>
-                                       <button onclick="updateBookCount(${index}, -1)">-</button>
-                                   </div>
-                                   <span>Last Interaction: ${student.lastInteraction}</span>`;
-            studentList.appendChild(studentDiv);
-        });
-    }
-
-    function updateBookCount(index, change) {
-        students[index].bookCount += change;
-        renderStudentList();
-    }
-
-    function showModal() {
-        document.getElementById('book-modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('book-modal').style.display = 'none';
-    }
-
-    function undoLastAction() {
-        alert('Undo last action functionality to be implemented.');
-    }
-
-    renderStudentList();
-</script>
+            <ul id="book-list"></ul>
+        </section>
+        <section id="student-management">
+            <h2>Öğrenci Yönetimi</h2>
+            <button id="add-student-btn">Yeni Öğrenci Ekle</button>
+            <ul id="student-list"></ul>
+        </section>
+        <section id="tracking">
+            <h2>Kitap Takibi</h2>
+            <button id="track-book-btn">Kitap Takip Et</button>
+            <div id="tracking-list"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
